@@ -12,7 +12,7 @@
 import random
 import string
 
-WORDLIST_FILENAME = "C:/Users/chase/Documents/60001fall2016/contents/assignments/ps2/ps2/words.txt"
+WORDLIST_FILENAME = "C:/Users/chase/Documents/snake/Hangman/words.txt"
 
 
 def load_words():
@@ -61,7 +61,11 @@ def is_word_guessed(secret_word, letters_guessed):
       False otherwise
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    for i in range(0, len(secret_word)):
+        if letters_guessed.count(secret_word[i]) == 0:
+            return False
+    return True
+
 
 
 
@@ -73,7 +77,13 @@ def get_guessed_word(secret_word, letters_guessed):
       which letters in secret_word have been guessed so far.
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    guessed = ""
+    for i in range(0, len(secret_word)):
+        if letters_guessed.count(secret_word[i]) > 0:
+            guessed += secret_word[i]
+        else:
+            guessed += "_ "
+    return guessed
 
 
 
@@ -84,7 +94,16 @@ def get_available_letters(letters_guessed):
       yet been guessed.
     '''
     # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    available = []
+    available[:0] = string.ascii_lowercase
+    for e in letters_guessed:
+        if available.count(e) != 0:
+            available.remove(e)
+    avail = ""
+    for e in available:
+        avail += e
+    return avail
+        
     
     
 
